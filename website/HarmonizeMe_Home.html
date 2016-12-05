@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HarmonizeMe</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/grayscale.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i>  <span class="light"></span> HarmonizeMe
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#download">Results</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="HarmonizeMe_DemoPage.html">Try it!</a>
+                        
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">HarmonizeMe</h1>
+                        
+                        <!-- <p class="intro-text" style="font-size:25px">Created by Alexander Fang, Julia Wilkins, and Nathan Yeazel </p> -->
+
+                        <table style="font-size: 25px; width:100%; table-layout: fixed;">
+                                <tr>
+                                    <td>Alexander Fang</td>
+                                    <td>Julia Wilkins</td>
+                                    <td>Nathan Yeazel</td>
+                                </tr> 
+                                
+                        </table>
+                        <br>
+                        <p>Northwestern University, EECS 352, Professor Bryan Pardo<br>Contact: <a href="mailto:juliawilkins2018@u.northwestern.edu">juliawilkins2018@u.northwestern.edu</a></p>
+
+                        <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>About HarmonizeMe</h2>
+                <p style="text-align: left">
+                    HarmonizeMe is a Python-based web application that automatically generates chordal harmony to accompany a user's sung melodic input.  The user first sings the desired key of their melody, and then sings a short melodic line in a major key.  The user then selects the chord that they would like to harmonize each note with.  The user is limited to I, ii6, IV, and V chords in major keys only at this point in time. For example, if the user selected the key of C major and the first pitch they sang was an 'F', they would have the option of creating a IV or ii6 chord to accompany their sung pitch. We then use pitch shifting to essentially harmonize their voice with itself and create a 3 voice harmony.
+                </p>
+                 <p style="text-align: left">
+                    HarmonizeMe could be used as an interesting tool for composers to quickly hear how various harmonies sound without actually needing multiple singers present.  It is also simply a fun application for users who are unfamiliar with choral harmony to play around with.
+
+                </p>    
+                 <p style="text-align: left">
+                    To test our product, we will compare HarmonizeMe to an existing product: Harmony Voice.  Harmony Voice automatically harmonizes a user's sung melody, among many other features.  We will objectively quantify success based on whether or not the correct pitches are detected and harmonized.  We also anticpate some subjective testing in which a musician with a trained ear is asked to determine how 'good' the generated harmony sounds based on the original sung melody.
+                </p>
+                <p style="text-align: left">
+                    <i>Progress:</i> We are currently using Aubio's implementation of a pitch tracker, which utilizes the Yin algorithm.  Aubio can track both pitch and beat onsets, and we use a Python interface written in C. We run our application in terminal. A demo can be found in the Demo section of the website. Future steps would be to implement a web application through Flask and Boostrap.  Additionally, we could work on implementing the Web Audio Toolkit, the first step being to record a signal from a web browser and write it to the disk.  We have written the code to convert the user-chosen progression to the pitch-shifted versions of the melody. The pitch tracking is not extremely accurate. Apart from octave errors (which don't affect our results, since we work in scale degrees by modular arithmetic), the pitch tracker also simply returns the wrong pitch. The onset detection errors are not destructive to creating the chords, they just cause confusion when the program asks the user for a chord for a note they never sang. Both these aspects can be improved upon, or just clarified to the user in real-time in the future.
+                </p>
+                <p><img src="ex.jpg" width='400'>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section INCLUDE GRAPH HERE OF RESULTS-->
+    <section id="download" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Results coming soon!</h2>
+                    <p>~insert results here~</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact HarmonizeMe</h2>
+                <p>Feel free to email us to provide feedback on our project or website, or to just say hello!</p>
+                <p><a href="mailto:juliawilkins2018@u.northwestern.edu">Contact <b>Julia</b></a>
+                </p>
+                <p><a href="mailto:nathanyeazel2016@u.northwestern.edu">Contact <b> Nathan</b></a>
+                </p>
+                <p><a href="mailto:alex.s.fang@gmail.com">Contact <b> Alex</b></a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    
+                    <li>
+                        <a href="https://github.com/nateyeazel/HarmonizeMe.git" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+
+  
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; HarmonizeMe 2016</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
+
+</body>
+
+</html>
