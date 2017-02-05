@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3B311801E372F0100DE77C8"
-               BuildableName = "HelloAudioKit2.app"
-               BlueprintName = "HelloAudioKit2"
-               ReferencedContainer = "container:HelloAudioKit2.xcodeproj">
+               BlueprintIdentifier = "E3C20B051E443F48006A708B"
+               BuildableName = "HarmonizeMe.app"
+               BlueprintName = "HarmonizeMe"
+               ReferencedContainer = "container:HarmonizeMe.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3B311941E372F0100DE77C8"
-               BuildableName = "HelloAudioKit2Tests.xctest"
-               BlueprintName = "HelloAudioKit2Tests"
-               ReferencedContainer = "container:HelloAudioKit2.xcodeproj">
+               BlueprintIdentifier = "E3C20B191E443F49006A708B"
+               BuildableName = "HarmonizeMeTests.xctest"
+               BlueprintName = "HarmonizeMeTests"
+               ReferencedContainer = "container:HarmonizeMe.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3B3119F1E372F0100DE77C8"
-               BuildableName = "HelloAudioKit2UITests.xctest"
-               BlueprintName = "HelloAudioKit2UITests"
-               ReferencedContainer = "container:HelloAudioKit2.xcodeproj">
+               BlueprintIdentifier = "E3C20B241E443F49006A708B"
+               BuildableName = "HarmonizeMeUITests.xctest"
+               BlueprintName = "HarmonizeMeUITests"
+               ReferencedContainer = "container:HarmonizeMe.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3B311801E372F0100DE77C8"
-            BuildableName = "HelloAudioKit2.app"
-            BlueprintName = "HelloAudioKit2"
-            ReferencedContainer = "container:HelloAudioKit2.xcodeproj">
+            BlueprintIdentifier = "E3C20B051E443F48006A708B"
+            BuildableName = "HarmonizeMe.app"
+            BlueprintName = "HarmonizeMe"
+            ReferencedContainer = "container:HarmonizeMe.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3B311801E372F0100DE77C8"
-            BuildableName = "HelloAudioKit2.app"
-            BlueprintName = "HelloAudioKit2"
-            ReferencedContainer = "container:HelloAudioKit2.xcodeproj">
+            BlueprintIdentifier = "E3C20B051E443F48006A708B"
+            BuildableName = "HarmonizeMe.app"
+            BlueprintName = "HarmonizeMe"
+            ReferencedContainer = "container:HarmonizeMe.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3B311801E372F0100DE77C8"
-            BuildableName = "HelloAudioKit2.app"
-            BlueprintName = "HelloAudioKit2"
-            ReferencedContainer = "container:HelloAudioKit2.xcodeproj">
+            BlueprintIdentifier = "E3C20B051E443F48006A708B"
+            BuildableName = "HarmonizeMe.app"
+            BlueprintName = "HarmonizeMe"
+            ReferencedContainer = "container:HarmonizeMe.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>HelloAudioKit2.xcscheme</key>
+		<key>HarmonizeMe.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E3B311801E372F0100DE77C8</key>
+		<key>E3C20B051E443F48006A708B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E3B311941E372F0100DE77C8</key>
+		<key>E3C20B191E443F49006A708B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E3B3119F1E372F0100DE77C8</key>
+		<key>E3C20B241E443F49006A708B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

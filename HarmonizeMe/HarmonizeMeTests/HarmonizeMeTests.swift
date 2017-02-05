@@ -1,15 +1,15 @@
 //
-//  HelloAudioKit2Tests.swift
-//  HelloAudioKit2Tests
+//  HarmonizeMeTests.swift
+//  HarmonizeMeTests
 //
-//  Created by Julia Wilkins on 1/24/17.
+//  Created by Julia Wilkins on 2/2/17.
 //  Copyright © 2017 Julia Wilkins. All rights reserved.
 //
 
 import XCTest
-@testable import HelloAudioKit2
+@testable import HarmonizeMe
 
-class HelloAudioKit2Tests: XCTestCase {
+class HarmonizeMeTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
