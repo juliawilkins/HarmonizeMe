@@ -11,124 +11,95 @@ import AudioKit
 
 class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    // tonic and mode
+    enum Tonic: String {
+        case C, Df, D, Ef, E, F, Fs, G, Af, A, Bf, B
+    }
     enum Mode {
         case major
         case minor
     }
+    // default mode and tonic of C Major
     var currMode = Mode.major
     var currTonic = Tonic.C
     
+    // data for UIPickerView's
+    let tonalCenterMajorData = ["C", "C♯/D♭", "D", "E♭", "E", "F", "F♯/G♭", "G", "A♭", "A", "B♭", "B"]
+    let tonalCenterMinorData = ["C", "C♯", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭", "A", "B♭", "B"]
+    let modePickerData = ["Major", "Minor"]
+    let numTonalCenters = 12
     
-    
-    enum Tonic: String {
-        case C, Df, D, Ef, E, F, Fs, G, Af, A, Bf, B
-    }
-    
-    
-    // MARK: Properties
-//    @IBOutlet weak var changeFrequency: UITextField!
-    
-    // MARK: Actions
-    
-    @IBAction func playKeyButton(_ sender: UIButton) {
-        // if let playing whatever this thing is blahblahblah
-        // see if it's currently playing, if it is, stop it before going on
-        
-        let tonicFileName = currTonic.rawValue + "Majormid.mp3"
-        let tonicAKAudioFile = try! AKAudioFile(readFileName: tonicFileName)
-        let tonicPlayer = try! AKAudioPlayer(file: tonicAKAudioFile)
-        AudioKit.output = tonicPlayer
-        AudioKit.start()
-        tonicPlayer.play()
-        //tonicPlayer.stop()
-    }
-    
-    
-    //let oscillator = AKOscillator()
-    
-    
+    // instance variables to play tonic files
+    // can't initialize here, but need to access outside of viewDidLoad
+    var tonicFileName: String!
+    var tonicAKAudioFile: AKAudioFile!
+    var tonicPlayer: AKAudioPlayer!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        changeFrequency.delegate = self
-        //oscillator.amplitude = 0.1
-        //oscillator.frequency = 220
+        // init with default C Major
+        tonicFileName = currTonic.rawValue + "Majormid.mp3"
+        tonicAKAudioFile = try! AKAudioFile(readFileName: tonicFileName)
+        tonicPlayer = try! AKAudioPlayer(file: tonicAKAudioFile!)
         
-        //AudioKit.output = oscillator
-        //AudioKit.start()
-        //oscillator.start()
+        // need to set .output before starting
+        // .start() allowed only once in entire code
+        AudioKit.output = tonicPlayer
+        AudioKit.start()
         
         tonalCenterPicker.dataSource = self
         tonalCenterPicker.delegate = self
         
         modePicker.dataSource = self
         modePicker.delegate = self
-        
-        /*
-         let CMajormid = try? AKAudioFile(readFileName: "CMajormid.mp3")
-         let player = try? AKAudioPlayer(file: CMajormid!)
-         
-         AudioKit.output = player!
-         AudioKit.start()
-         player!.play()
-         */
     }
-    
-    @IBOutlet weak var tonalCenterPicker: UIPickerView!
-    let tonalCenterMajorData = ["C", "C♯/D♭", "D", "E♭", "E", "F", "F♯/G♭", "G", "A♭", "A", "B♭", "B"]
-    let tonalCenterMinorData = ["C", "C♯", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭", "A", "B♭", "B"]
-    
-    @IBOutlet weak var modePicker: UIPickerView!
-    let modePickerData = ["Major", "Minor"]
-    
-    /*
-    @IBAction func ChangeFrequency(_ sender: UISlider) {
-        oscillator.frequency = Double(sender.value * 880)
-    } */
-    
-    @IBOutlet weak var keyLabel: UILabel!
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    
+    // MARK: Actions
+    @IBAction func playKeyButton(_ sender: UIButton) {
+        // currently only playing middle register tonic files
+        if currMode == .major {
+            tonicFileName = currTonic.rawValue + "Majormid.mp3"
+        }
+        else {
+            tonicFileName = currTonic.rawValue + "Minormid.mp3"
+        }
+        tonicAKAudioFile = try! AKAudioFile(readFileName: tonicFileName)
+        try! tonicPlayer.replace(file: tonicAKAudioFile)
+        tonicPlayer.play()
+        
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        let input = changeFrequency.text
-        let freq: Double = (input! as NSString).doubleValue
-        oscillator.frequency = freq
-    } */
     
+    // MARK: Properties
+    @IBOutlet weak var tonalCenterPicker: UIPickerView!
+    @IBOutlet weak var modePicker: UIPickerView!
+    @IBOutlet weak var keyLabel: UILabel!
+    
+
     //PROTOCOL!
     
     //MARK: - Delegates and data sources
     //MARK: Data Sources
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        // 1 component regardless of which view
-        return 1
+        return 1 // one list displayed each UIPickerView
     }
     
     // num of rows in component
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == modePicker {
-            return modePickerData.count
+            return modePickerData.count // only two modes for now
         }
         else {
-            if currMode == .major {
-                return tonalCenterMajorData.count
-            }
-            else {
-                return tonalCenterMinorData.count
-            }
+            return numTonalCenters // quarter-tones will probably never be implemented in this app
         }
     }
     
@@ -147,12 +118,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         }
     }
     
-    // responding to selection
+    // responding to selection -- update tonic and mode
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == modePicker {
             switch row {
             case 0:
-                //changed mode
+                // if changed mode, then refresh which enharmonic spellings the user sees
                 if currMode != .major {
                     tonalCenterPicker.reloadAllComponents()
                 }
@@ -198,4 +169,3 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         }
     }
 }
-
