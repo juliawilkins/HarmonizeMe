@@ -182,8 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				57FFA17F1E47C6CE006F3E6E /* AppDelegate.swift */,
-				57FFA1811E47C6CE006F3E6E /* ViewController.swift */,
 				57FFA1831E47C6CE006F3E6E /* Main.storyboard */,
+				57FFA1811E47C6CE006F3E6E /* ViewController.swift */,
 				57FFA1861E47C6CE006F3E6E /* Assets.xcassets */,
 				57FFA1881E47C6CE006F3E6E /* LaunchScreen.storyboard */,
 				57FFA18B1E47C6CE006F3E6E /* Info.plist */,
@@ -678,6 +678,7 @@
 				57FFA1A61E47C6CE006F3E6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		57FFA1A71E47C6CE006F3E6E /* Build configuration list for PBXNativeTarget "HarmonizeMeAppTests" */ = {
 			isa = XCConfigurationList;
@@ -686,6 +687,7 @@
 				57FFA1A91E47C6CE006F3E6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		57FFA1AA1E47C6CE006F3E6E /* Build configuration list for PBXNativeTarget "HarmonizeMeAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -694,6 +696,7 @@
 				57FFA1AC1E47C6CE006F3E6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
