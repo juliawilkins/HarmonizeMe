@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57C9DE1C1E49689A00BC9590 /* pianotesttrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57C9DE1B1E49689A00BC9590 /* pianotesttrack.mp3 */; };
 		57FCE30D1E48625300115C56 /* AfMajorhigh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57FCE2CE1E48625300115C56 /* AfMajorhigh.mp3 */; };
 		57FCE30E1E48625300115C56 /* AfMajorlow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57FCE2CF1E48625300115C56 /* AfMajorlow.mp3 */; };
 		57FCE30F1E48625300115C56 /* AfMajormid.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57FCE2D01E48625300115C56 /* AfMajormid.mp3 */; };
@@ -113,6 +114,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		57C9DE1B1E49689A00BC9590 /* pianotesttrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianotesttrack.mp3; sourceTree = "<group>"; };
 		57FCE2CE1E48625300115C56 /* AfMajorhigh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AfMajorhigh.mp3; sourceTree = "<group>"; };
 		57FCE2CF1E48625300115C56 /* AfMajorlow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AfMajorlow.mp3; sourceTree = "<group>"; };
 		57FCE2D01E48625300115C56 /* AfMajormid.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AfMajormid.mp3; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 		57FCE2CD1E48625300115C56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				57C9DE1B1E49689A00BC9590 /* pianotesttrack.mp3 */,
 				57FCE2CE1E48625300115C56 /* AfMajorhigh.mp3 */,
 				57FCE2CF1E48625300115C56 /* AfMajorlow.mp3 */,
 				57FCE2D01E48625300115C56 /* AfMajormid.mp3 */,
@@ -463,6 +466,7 @@
 				57FCE3451E48625300115C56 /* FsMinormid.mp3 in Resources */,
 				57FCE30E1E48625300115C56 /* AfMajorlow.mp3 in Resources */,
 				57FCE3151E48625300115C56 /* AMajormid.mp3 in Resources */,
+				57C9DE1C1E49689A00BC9590 /* pianotesttrack.mp3 in Resources */,
 				57FCE31A1E48625300115C56 /* BfMajorlow.mp3 in Resources */,
 				57FCE33B1E48625300115C56 /* FMajorlow.mp3 in Resources */,
 				57FCE34B1E48625300115C56 /* GMinormid.mp3 in Resources */,

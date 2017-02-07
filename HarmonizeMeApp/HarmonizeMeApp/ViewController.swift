@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioKit
+import Foundation
 
 class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -34,6 +35,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     var tonicFileName: String!
     var tonicAKAudioFile: AKAudioFile!
     var tonicPlayer: AKAudioPlayer!
+    var tracker: AKFrequencyTracker!
+    var pitchTrackerTimer: Timer!
 
     
     override func viewDidLoad() {
@@ -44,6 +47,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         tonicFileName = currTonic.rawValue + "Majormid.mp3"
         tonicAKAudioFile = try! AKAudioFile(readFileName: tonicFileName)
         tonicPlayer = try! AKAudioPlayer(file: tonicAKAudioFile!)
+        //tracker = AKFrequencyTracker(tonicPlayer)
         
         // need to set .output before starting
         // .start() allowed only once in entire code
@@ -78,6 +82,20 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         
     }
     
+    @IBAction func playTestPitchTrack(_ sender: UIButton) {
+        AudioKit.stop()
+        tonicAKAudioFile = try! AKAudioFile(readFileName: "pianotesttrack.mp3")
+        try! tonicPlayer.replace(file: tonicAKAudioFile)
+        tracker = AKFrequencyTracker(tonicPlayer)
+        AudioKit.output = tracker
+        AudioKit.start()
+        tonicPlayer.play()
+        pitchTrackerTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(self.printFreq), userInfo: nil, repeats: true)
+    }
+    
+    public func printFreq() {
+        print(String(format: "%.2f", tracker.frequency))
+    }
     
     // MARK: Properties
     @IBOutlet weak var tonalCenterPicker: UIPickerView!
