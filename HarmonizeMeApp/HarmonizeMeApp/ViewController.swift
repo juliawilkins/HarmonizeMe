@@ -84,14 +84,93 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     
     @IBAction func playTestPitchTrack(_ sender: UIButton) {
         AudioKit.stop()
-        tonicAKAudioFile = try! AKAudioFile(readFileName: "pianotesttrack.mp3")
+        tonicAKAudioFile = try! AKAudioFile(readFileName: "tatest.wav")
         try! tonicPlayer.replace(file: tonicAKAudioFile)
         tracker = AKFrequencyTracker(tonicPlayer)
-        AudioKit.output = tracker
-        AudioKit.start()
-        tonicPlayer.play()
-        pitchTrackerTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(self.printFreq), userInfo: nil, repeats: true)
+        //print(String(describing: (tonicAKAudioFile.floatChannelData![0])))
+        var signal_data = tonicAKAudioFile.floatChannelData![0]
+        // AudioKit.output = tracker
+        // AudioKit.start()
+        // tonicPlayer.play()
+        // pitchTrackerTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(self.printFreq), userInfo: nil, repeats: true)
+        
+        //print(signal_data)
+        //print(get_rms(sig: [7.0, 20.0]))
+        
+        
+        print(onset_times(audioFile: tonicAKAudioFile, windowSize: 1000, hopSize: 500, sampleRate: 44100.0))
+        
     }
+    
+    public func get_rms(sig: [Float]) -> Float {
+        var summation = Float(0.0)
+        let len = sig.count
+        for ii in 0..<len {
+            summation += sig[ii] * sig[ii]
+        }
+        return sqrt(summation/Float(len))
+    }
+    
+    // [1, 2, 3] % 2
+    
+    public func onset_times(audioFile: AKAudioFile, windowSize: Int, hopSize: Int, sampleRate: Float) -> [Float] {
+        var onsets = [Float]()
+        var timeOnsets = [Float]()
+        var sampOnsets = [Float]()
+        let sig = audioFile.floatChannelData![0]
+        let duration = Float(audioFile.duration)
+        let sampleCount = audioFile.samplesCount
+        var sigcopy = sig
+        let threshold = 0.40
+        
+        // append 0's to end of sig to make it divisible by hopSize
+        let numZerosToAdd = sig.count % hopSize
+        for _ in 0..<numZerosToAdd {
+            sigcopy.append(0.0)
+        }
+        
+        let lengthToCoverWithHops = sigcopy.count - windowSize
+        let numHops = 1 + lengthToCoverWithHops/hopSize
+        
+        
+        var start: Int!
+        var end: Int!
+        var window: [Float]
+        
+        var prevRMS: Float = 0.0
+        var currRMS: Float = 0.0
+        
+        for ii in 0..<numHops {
+            start = ii*hopSize
+            end = start + windowSize
+            // window is sliced
+            window = Array(sigcopy[start..<end])
+            currRMS = get_rms(sig: window)
+            print("currRMS: " + String(currRMS))
+            
+            // first window won't have a ratio of windows, so skip
+            if ii == 0 {
+                prevRMS = currRMS
+                continue
+            }
+            else if (prevRMS/currRMS < threshold) || (currRMS > 10.0) {
+                onsets.append(Float(ii))
+                prevRMS = currRMS
+            }
+        }
+        
+        // converting into time (s)
+        for onset in onsets {
+            sampOnsets.append(onset * Float(hopSize))
+        }
+        print("duration of audio file: " + String(duration))
+        for samp in sampOnsets {
+            timeOnsets.append(samp / sampleRate)
+        }
+        
+        return timeOnsets
+    }
+
     
     public func printFreq() {
         print(String(format: "%.2f", tracker.frequency))

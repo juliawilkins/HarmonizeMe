@@ -45,9 +45,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3a-li-IA4">
-                                <rect key="frame" x="119" y="227" width="136" height="30"/>
+                                <rect key="frame" x="116" y="227" width="143" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play test pitch track"/>
+                                <state key="normal" title="Test Onset Detector!"/>
                                 <connections>
                                     <action selector="playTestPitchTrack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I82-HN-UsB"/>
                                 </connections>

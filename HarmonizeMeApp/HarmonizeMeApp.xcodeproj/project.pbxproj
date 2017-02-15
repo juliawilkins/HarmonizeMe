@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5781A1B21E544B420098C5A5 /* tatest_Labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5781A1AF1E544B420098C5A5 /* tatest_Labels.txt */; };
+		5781A1B31E544B420098C5A5 /* tatest.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5781A1B01E544B420098C5A5 /* tatest.wav */; };
+		5781A1B41E544B420098C5A5 /* pianotesttrackmono.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5781A1B11E544B420098C5A5 /* pianotesttrackmono.wav */; };
 		57C9DE1C1E49689A00BC9590 /* pianotesttrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57C9DE1B1E49689A00BC9590 /* pianotesttrack.mp3 */; };
 		57FCE30D1E48625300115C56 /* AfMajorhigh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57FCE2CE1E48625300115C56 /* AfMajorhigh.mp3 */; };
 		57FCE30E1E48625300115C56 /* AfMajorlow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 57FCE2CF1E48625300115C56 /* AfMajorlow.mp3 */; };
@@ -114,6 +117,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5781A1AF1E544B420098C5A5 /* tatest_Labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tatest_Labels.txt; sourceTree = "<group>"; };
+		5781A1B01E544B420098C5A5 /* tatest.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tatest.wav; sourceTree = "<group>"; };
+		5781A1B11E544B420098C5A5 /* pianotesttrackmono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pianotesttrackmono.wav; sourceTree = "<group>"; };
 		57C9DE1B1E49689A00BC9590 /* pianotesttrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pianotesttrack.mp3; sourceTree = "<group>"; };
 		57FCE2CE1E48625300115C56 /* AfMajorhigh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AfMajorhigh.mp3; sourceTree = "<group>"; };
 		57FCE2CF1E48625300115C56 /* AfMajorlow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AfMajorlow.mp3; sourceTree = "<group>"; };
@@ -223,6 +229,9 @@
 		57FCE2CD1E48625300115C56 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5781A1AF1E544B420098C5A5 /* tatest_Labels.txt */,
+				5781A1B01E544B420098C5A5 /* tatest.wav */,
+				5781A1B11E544B420098C5A5 /* pianotesttrackmono.wav */,
 				57C9DE1B1E49689A00BC9590 /* pianotesttrack.mp3 */,
 				57FCE2CE1E48625300115C56 /* AfMajorhigh.mp3 */,
 				57FCE2CF1E48625300115C56 /* AfMajorlow.mp3 */,
@@ -456,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57FCE3121E48625300115C56 /* AfMinormid.mp3 in Resources */,
+				5781A1B41E544B420098C5A5 /* pianotesttrackmono.wav in Resources */,
 				57FCE31C1E48625300115C56 /* BfMinorlow.mp3 in Resources */,
 				57FCE3261E48625300115C56 /* CsMinorhigh.mp3 in Resources */,
 				57FCE3171E48625300115C56 /* AMinorlow.mp3 in Resources */,
@@ -501,12 +511,14 @@
 				57FCE3341E48625300115C56 /* EMajorhigh.mp3 in Resources */,
 				57FCE3141E48625300115C56 /* AMajorlow.mp3 in Resources */,
 				57FCE3321E48625300115C56 /* EfMinorlow.mp3 in Resources */,
+				5781A1B21E544B420098C5A5 /* tatest_Labels.txt in Resources */,
 				57FCE32E1E48625300115C56 /* EfMajorhigh.mp3 in Resources */,
 				57FCE30D1E48625300115C56 /* AfMajorhigh.mp3 in Resources */,
 				57FCE3461E48625300115C56 /* GMajorhigh.mp3 in Resources */,
 				57FCE31B1E48625300115C56 /* BfMajormid.mp3 in Resources */,
 				57FCE31D1E48625300115C56 /* BfMinormid.mp3 in Resources */,
 				57FFA1871E47C6CE006F3E6E /* Assets.xcassets in Resources */,
+				5781A1B31E544B420098C5A5 /* tatest.wav in Resources */,
 				57FCE30F1E48625300115C56 /* AfMajormid.mp3 in Resources */,
 				57FCE3301E48625300115C56 /* EfMajormid.mp3 in Resources */,
 				57FCE32F1E48625300115C56 /* EfMajorlow.mp3 in Resources */,
