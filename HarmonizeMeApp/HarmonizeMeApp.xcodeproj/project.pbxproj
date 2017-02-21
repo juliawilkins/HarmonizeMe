@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5770DA781E5C98AD0052F9A6 /* PitchConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770DA771E5C98AD0052F9A6 /* PitchConverter.swift */; };
+		5770DA7A1E5C996D0052F9A6 /* NoteSegmenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770DA791E5C996D0052F9A6 /* NoteSegmenter.swift */; };
+		5770DA7C1E5C99910052F9A6 /* PitchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5770DA7B1E5C99910052F9A6 /* PitchDetector.swift */; };
 		5781A1B21E544B420098C5A5 /* tatest_Labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5781A1AF1E544B420098C5A5 /* tatest_Labels.txt */; };
 		5781A1B31E544B420098C5A5 /* tatest.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5781A1B01E544B420098C5A5 /* tatest.wav */; };
 		5781A1B41E544B420098C5A5 /* pianotesttrackmono.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5781A1B11E544B420098C5A5 /* pianotesttrackmono.wav */; };
@@ -117,6 +120,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5770DA771E5C98AD0052F9A6 /* PitchConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchConverter.swift; sourceTree = "<group>"; };
+		5770DA791E5C996D0052F9A6 /* NoteSegmenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSegmenter.swift; sourceTree = "<group>"; };
+		5770DA7B1E5C99910052F9A6 /* PitchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchDetector.swift; sourceTree = "<group>"; };
 		5781A1AF1E544B420098C5A5 /* tatest_Labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tatest_Labels.txt; sourceTree = "<group>"; };
 		5781A1B01E544B420098C5A5 /* tatest.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tatest.wav; sourceTree = "<group>"; };
 		5781A1B11E544B420098C5A5 /* pianotesttrackmono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pianotesttrackmono.wav; sourceTree = "<group>"; };
@@ -331,6 +337,9 @@
 				57FFA1861E47C6CE006F3E6E /* Assets.xcassets */,
 				57FFA1881E47C6CE006F3E6E /* LaunchScreen.storyboard */,
 				57FFA18B1E47C6CE006F3E6E /* Info.plist */,
+				5770DA771E5C98AD0052F9A6 /* PitchConverter.swift */,
+				5770DA791E5C996D0052F9A6 /* NoteSegmenter.swift */,
+				5770DA7B1E5C99910052F9A6 /* PitchDetector.swift */,
 			);
 			path = HarmonizeMeApp;
 			sourceTree = "<group>";
@@ -558,7 +567,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5770DA7C1E5C99910052F9A6 /* PitchDetector.swift in Sources */,
 				57FFA1821E47C6CE006F3E6E /* ViewController.swift in Sources */,
+				5770DA781E5C98AD0052F9A6 /* PitchConverter.swift in Sources */,
+				5770DA7A1E5C996D0052F9A6 /* NoteSegmenter.swift in Sources */,
 				57FFA1801E47C6CE006F3E6E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
