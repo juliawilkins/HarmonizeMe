@@ -40,7 +40,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     var pitchTrackerTimer: Timer!
     var time = 0.0 // keep track of time
     
+    // new globals
     var trackedFrequencies = [Float]()
+    var signal_data = [Float]()
+    var onsetSamps = [Int]()
+    var onsetTimes = [Float]()
+    let noteSegmenter = NoteSegmenter()
+    let pitchDetector = PitchDetector()
 
     
     override func viewDidLoad() {
@@ -88,8 +94,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     
     @IBAction func playTestPitchTrack(_ sender: UIButton) {
         AudioKit.stop()
-        tonicAKAudioFile = try! AKAudioFile(readFileName: "tatest.wav")
-        let signal_data = tonicAKAudioFile.floatChannelData![0]
+        tonicAKAudioFile = try! AKAudioFile(readFileName: "Female_1a.wav")
+        signal_data = tonicAKAudioFile.floatChannelData![0]
         
         //make into stereo
         var stereo_data = [[Float]]()
@@ -104,12 +110,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         AudioKit.output = tracker
         AudioKit.start()
         tonicPlayer.play()
-        pitchTrackerTimer = Timer.scheduledTimer(timeInterval: 512.0/44100.0, target: self, selector: #selector(self.trackFreq), userInfo: nil, repeats: true)
-        
-        let noteSegmenter = NoteSegmenter()
-        let onsetTimes = noteSegmenter.onset_times(audioSignal: signal_data, windowSize: 1024, hopSize: 512, sampleRate: 44100.0)
-        print("Onset times: " + String(describing: onsetTimes))
-        //let testOnsets = onset_times(audioFile: tonicAKAudioFile, windowSize: 1024, hopSize: 512, sampleRate: 44100.0) ***
+        time = 0
+        pitchTrackerTimer = Timer.scheduledTimer(timeInterval: 1.0/44100.0, target: self, selector: #selector(self.trackFreq), userInfo: nil, repeats: true)
+        onsetSamps = noteSegmenter.onsetSamps(audioSignal: signal_data, windowSize: 1024, hopSize: 512, sampleRate: 44100.0)        //let testOnsets = onset_times(audioFile: tonicAKAudioFile, windowSize: 1024, hopSize: 512, sampleRate: 44100.0) ***
     }
     
     public func trackFreq() {
@@ -121,11 +124,25 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         if (time >= tonicAKAudioFile.duration)
         {
             pitchTrackerTimer.invalidate()
-            print("Frequencies every 512/44100 seconds: " + String(describing: trackedFrequencies))
-            print("Size of above array: " + String(trackedFrequencies.count))
+            
+            // HERE
+            //print("Frequencies every 1/44100 seconds: " + String(describing: trackedFrequencies))
+            // print("Size of frequency array: " + String(trackedFrequencies.count))
+            // print("Size of audio array: " + String(tonicAKAudioFile.samplesCount))
+            
+            while (trackedFrequencies.count > Int(tonicAKAudioFile.samplesCount))
+            {
+                trackedFrequencies.removeLast()
+            }
+            onsetSamps = noteSegmenter.onsetSampsFromPitch(audioSignal: signal_data, freqArray: trackedFrequencies,
+                                                           windowSize: 8192, hopSize: 4096, sampleRate: 44100.0)
+            print("Onset times: " + String(describing: onsetSamps))
+            
+            //let pitches = pitchDetector.detectNoteNames(freqArray: trackedFrequencies, onsetSamps: onsetSamps)
+            //print(pitches)
+            
         }
-        time += 512.0/44100.0
-        
+        time += 1.0/44100.0
     }
     
     // MARK: Properties

@@ -16,21 +16,22 @@ class PitchConverter {
     private let noteNamesWithSharps = ["C", "C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"]
     private let noteNamesWithFlats = ["C", "D♭","D","E♭","E","F","G♭","G","A♭","A","B♭","B"]
     
-    private func MIDIfromFreq(frequency: Float) -> Int {
+    internal func MIDIfromFreq(frequency: Float) -> Int {
         let freq = frequency
         let midi = 69.00 + (12.00*log2f(freq / 440.00)) // exact MIDI
         return Int(round(midi)) % 12 // nearest MIDI mod 12
     }
     
     // doesn't round, doesn't mod 12
-    private func exactMIDIfromFreq(frequency: Float) -> Float {
+    internal func exactMIDIfromFreq(frequency: Float) -> Float {
         let freq = frequency
         let midi = 69.00 + (12.00*log2f(freq / 440.00)) // exact MIDI
         return midi
     }
     
-    private func noteNameFromMIDI(midiNum: Int) -> String {
+    internal func noteNameFromMIDI(midiNum: Int) -> String {
         return noteNames[midiNum % 12]
     }
+    
     
 }
