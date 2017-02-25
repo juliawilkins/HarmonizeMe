@@ -67,6 +67,18 @@ class PitchDetector {
     }
     
     
+    internal func detectExactMIDI(freqArray: [Float], onsetSamps: [Int]) -> [Float] {
+        let freqArray = self.detectFrequencies(freqArray: freqArray, onsetSamps: onsetSamps)
+        detectedFrequencies = freqArray
+        var exactMIDI = [Float]()
+        for freq in freqArray {
+            let midiFromFreq = pitchConverter.exactMIDIfromFreq(frequency: freq)
+            exactMIDI.append(midiFromFreq)
+        }
+        return exactMIDI
+    }
+    
+    
     // this will detect the pitches when given the frequency array and the onsets in samples
     internal func detectNoteNames(freqArray: [Float], onsetSamps: [Int]) -> [String] {
         let freqArray = self.detectFrequencies(freqArray: freqArray, onsetSamps: onsetSamps)
@@ -79,8 +91,69 @@ class PitchDetector {
         return noteNameArray
     }
     
+    // Tonic: C: 0, D: 2, etc. Mode: Major: 0, Minor: 1
+    internal func convertMelodyToScaleDegrees(detectedExactMIDI: [Float], tonic: Int, mode: Int) -> [Int] {
+        var melodyInScaleDegrees = [Int]()
+        for note in detectedExactMIDI {
+            melodyInScaleDegrees.append(self.pitchInScaleDegree(exactMIDI: note, tonic: tonic, mode: mode))
+        }
+        return melodyInScaleDegrees
+    }
     
-    
+    internal func pitchInScaleDegree(exactMIDI: Float, tonic: Int, mode: Int) -> Int {
+        // pretend it's in C Major for simplicity
+        let exactMIDIShiftedToC = exactMIDI - Float(tonic % 12)
+        let exactMIDImod = exactMIDIShiftedToC.truncatingRemainder(dividingBy: 12.0)
+        
+        // major
+        if mode == 0 {
+            if exactMIDImod > 11.5 || exactMIDImod <= 1.0 {
+                return 1
+            }
+            else if exactMIDImod > 1.0 && exactMIDImod <= 3.0 {
+                return 2
+            }
+            else if exactMIDImod > 3.0 && exactMIDImod <= 4.5 {
+                return 3
+            }
+            else if exactMIDImod > 4.5 && exactMIDImod <= 6.0 {
+                return 4
+            }
+            else if exactMIDImod > 6.0 && exactMIDImod <= 8.0 {
+                return 5
+            }
+            else if exactMIDImod > 8.0 && exactMIDImod <= 10.0 {
+                return 6
+            }
+            else { //exactMIDImod > 10.0 && exactMIDImod <= 11.5
+                return 7
+            }
+        }
+            // natural minor
+        else { // mode == 1
+            if exactMIDImod > 11.0 || exactMIDImod <= 1.0 {
+                return 1
+            }
+            else if exactMIDImod > 1.0 && exactMIDImod <= 2.5 {
+                return 2
+            }
+            else if exactMIDImod > 2.5 && exactMIDImod <= 4.0 {
+                return 3
+            }
+            else if exactMIDImod > 4.0 && exactMIDImod <= 6.0 {
+                return 4
+            }
+            else if exactMIDImod > 6.0 && exactMIDImod <= 7.5 {
+                return 5
+            }
+            else if exactMIDImod > 7.5 && exactMIDImod <= 9 {
+                return 6
+            }
+            else { //exactMIDImod > 9.0 && exactMIDImod <= 11.0
+                return 7
+            }
+        }
+    }
     
     private func median(data: [Float]) -> Float {
         let sortedData = data.sorted()
