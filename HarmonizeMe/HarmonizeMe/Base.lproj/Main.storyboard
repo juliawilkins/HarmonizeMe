@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -242,6 +242,14 @@
                                     <segue destination="9RX-Ql-dEM" kind="show" id="N0P-eo-OUi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlV-AZ-ADF">
+                                <rect key="frame" x="108" y="384" width="167" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play harmonized version"/>
+                                <connections>
+                                    <action selector="playHarmonizedAudio:" destination="eYG-AS-1Ra" eventType="touchUpInside" id="WcK-nU-l8I"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -257,6 +265,7 @@
                     </view>
                     <connections>
                         <outlet property="playButton" destination="d9L-sb-nwc" id="i8b-yg-8Hi"/>
+                        <outlet property="playHarmonizedButton" destination="PlV-AZ-ADF" id="bd9-yq-Zz7"/>
                         <outlet property="recordButton" destination="VZf-Fu-8Tf" id="yLm-Ad-D5M"/>
                         <outlet property="stopButton" destination="9WU-bh-DuM" id="QDk-ho-FLV"/>
                     </connections>
@@ -267,7 +276,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="N0P-eo-OUi"/>
         <segue reference="ClI-bW-1qL"/>
+        <segue reference="N0P-eo-OUi"/>
     </inferredMetricsTieBreakers>
 </document>
